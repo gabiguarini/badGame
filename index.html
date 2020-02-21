@@ -1,0 +1,153 @@
+<!DOCTYPE html> 
+<html> 
+<head>
+    <meta charset="utf-8"> 
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <title>Bad game</title> 
+  
+    <style> 
+        html { 
+    font-family: sans-serif;
+    color: blue;
+    font-size: 32px;
+    } 
+      
+        body { 
+    background-color: red;
+    width: 50%; 
+    max-width: 800px; 
+    min-width: 480px; 
+    margin: 0 auto; 
+    } 
+    </style> 
+</head> 
+  
+<body> 
+<h1>Adibinador?...</h1> 
+  <div>
+    <p>Elija un nro :^)</p>
+    
+    <select id="quantiti"></select>
+    <script>
+        function quantity(amount){
+        var select = document.getElementById('quantiti');
+            for (var i = 0; i < amount; i++){
+                
+            select.options[select.options.length] = new Option(i+1, i);
+                
+            }
+        }
+
+        quantity(100);
+      </script>
+      <div>
+      <label for="slidecontainer">deslizame para confirmar ;)) </label> 
+      <div class="slidecontainer">
+          
+          <input type="range" min="1" max="100" value="1" class="slider" id="myRange" onchange="myFunction(this.value)">
+      
+      </div>
+      </div>
+      <p id="demo"></p>
+      <script>
+          function myFunction(val) {
+              
+              
+              if(val == 100){
+                  document.getElementById("second").style.display="block";
+                  document.getElementById("demo").style.display="none";
+                  myMove();
+                  
+              }else{
+                  document.getElementById("demo").innerHTML = "un poquito más";
+              }
+          }
+      </script>
+      
+      
+    </div>
+    
+    <div id="second" class="hidden">
+        <p>teniendo en cuenta el nro que elegiste, el siguiente nro aleatorio será mayor o menor?</p>
+        <label for="select-guess">Seleccione su respuesta </label> 
+        <select id="select-guess" onchange="mostrarSeleccion()">
+            <option value="mayor">mayor</option>
+            <option value="menor">menor</option>
+        </select>
+        
+    
+    <button id="myAnimation" onclick="seGuro()">suerte!</button>
+       
+       
+        <div class="toggle hidden" id="gg">
+           <label for="switch">toque pa confirmar </label>
+            <label class="switch">
+              <input type="checkbox">
+              <span class="round"></span>
+            </label>    
+        </div>
+    
+    
+    <script>
+        
+        /*document.getElementById("comprobar").onclick=myMove();*/
+        
+        function myMove() {
+          var elem = document.getElementById("myAnimation");
+          var pos = 0;
+          var id = setInterval(frame, 10);
+          function frame() {
+            if (pos == 350) {
+              clearInterval(id);
+            } else {
+              pos++;
+              elem.style.top = pos + 'px';
+              elem.style.left = pos + 'px';
+            }
+          }
+            
+        }
+        
+        function seGuro() {
+          var holi = prompt("tas segurx?", "si/no");
+          if (holi == "si") {
+            mostrarNum();
+          }
+            }
+        
+        
+        
+        function mostrarNum(){
+        var first = document.querySelector('#quantiti option:checked').value;
+        var resp = document.querySelector('#select-guess option:checked').value;
+        var nuevo = Math.floor(Math.random() * 10 + 1); 
+            
+            switch(resp){
+            case "mayor":
+                if(first < nuevo){
+                    alert(nuevo + ' ' + 'Adivinaste! :)');
+                }
+                    else{
+                        alert(nuevo + ' ' + 'mejor suerte la prox :(');
+                    }
+                break;
+                    
+            case "menor":
+                if(first > nuevo){
+                    alert(nuevo + ' ' + 'Adivinaste! :)');
+                }
+                    else{
+                        alert(nuevo + ' ' + 'mejor suerte la prox :(');
+                    }
+                break;
+            
+            }
+            document.getElementById("texto--resultado").innerHTML= resultado;
+        }
+    </script>
+    </div>
+  
+</body> 
+</html>                

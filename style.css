@@ -1,0 +1,97 @@
+.hidden{display: none;}
+
+.slider {
+  -webkit-appearance: none;
+  width: 200%;
+  height: 15px;
+  border-radius: 5px;  
+  background: yellow;
+  /*
+    queda más feo con outline
+    outline: none;
+    */
+  opacity: 0.7;
+  transition: opacity .2s;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%; 
+  background: yellow;
+  /*for chaos purposes*/
+  cursor: not-allowed;
+    
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: yellow;
+  cursor: not-allowed;
+}
+
+.toggle {
+  position: absolute;
+  top: 0;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+
+.round {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  transition: .4s;
+  border-radius: 34px;
+}
+
+.round:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  transition: .4s;
+  border-radius: 50%;
+}
+
+input:checked + .round {
+  background-color: #2196F3;
+}
+
+input:focus + .round {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .round:before {
+  transform: translateX(26px);
+}
+
+#myAnimation {
+  width: 50px;
+  height: 50px;
+  position: absolute;
+}
